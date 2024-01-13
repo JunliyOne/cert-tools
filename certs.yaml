@@ -1,0 +1,35 @@
+certs:
+- path: ./
+  name: ca
+  subject:
+      common_name: "aatestaa"
+  isCa: true
+  basicConstraintsValid: true
+  keyUsage:
+      - KeyUsageCertSign
+      - KeyUsageDigitalSignature
+      - KeyUsageKeyEncipherment
+  expiration: 10
+  password: "123456"
+- path: ./
+  name: bbbserver
+  subject:
+      common_name: "server aatestaa"
+  basicConstraintsValid: false
+  keyUsage:
+      - KeyUsageDigitalSignature
+      - KeyUsageKeyEncipherment
+  extKeyUsage:
+  - ExtKeyUsageServerAuth
+  dns:
+  - "test.12345"
+  - "*.aa.com"
+  IPs:
+  - "127.0.0.1"
+  - "10.131.12.12"
+  # notBefore: 2024-01-01
+  # notAfter: 2025-01-01
+  expiration: 10
+  caCert: "./ca.crt"
+  caKey: "./ca.key"
+  password: "123456"
